@@ -1,0 +1,2 @@
+com/elsoftware/agenda/BuildConfig.java
+ com.elsoftware.agenda.BuildConfig
