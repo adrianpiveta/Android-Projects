@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,15 +36,16 @@ public class MainActivity extends Activity {
 
         List<String> alunos = new ArrayList<>(Arrays.asList("Adrian",
                 "Daniel","Pivete")) ;
-        TextView primeiroAluno = findViewById(R.id.textView);
-        TextView segundoAluno = findViewById(R.id.textView2);
-        TextView terceiroAluno = findViewById(R.id.textView3);
+        TextView primeiroAluno = findViewById(R.id.aluno);
+        TextView segundoAluno = findViewById(R.id.aluno2);
+        TextView terceiroAluno = findViewById(R.id.aluno3);
 
         primeiroAluno.setText(alunos.get(0));
         segundoAluno.setText(alunos.get(1));
         terceiroAluno.setText(alunos.get(2));
 
-        //Toast: texto momentãneo, aviso
+
+        //Toast: texto momentaneo, aviso
         //Toast.makeText(this, "Olá by: Adrian", Toast.LENGTH_SHORT).show();
     }
 }
