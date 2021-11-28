@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/ic_launcher_foreground">
+    android:theme="@android:style/Theme.NoTitleBar"
+    android:background="@drawable/background">
+    <!-- theme: Remove  a barra de titulo-->
 
     <ImageView
         android:id="@+id/logo"
@@ -19,10 +28,9 @@
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"/>
 
 
     <TextView
@@ -30,26 +38,90 @@
         android:id="@+id/aluno"
         android:hint="aluno"
         android:drawableRight="@drawable/ic_pessoa"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintTop_toTopOf="@id/containerComponents"
-        android:text="TextView"/>
+        android:text="sou a pessoa"
+        />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        style="@style/Edit_Text"
+        android:id="@+id/aluno2"
+        android:drawableRight="@drawable/ic_pessoa"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="73dp" />
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@id/aluno"
+        />
+
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        style="@style/Edit_Text"
+        android:id="@+id/aluno3"
+        android:drawableRight="@drawable/ic_pessoa"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="128dp" />
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@id/aluno2"
+        />
+
+         <androidx.appcompat.widget.AppCompatButton
+            style="@style/Button"
+             android:id="@+id/bt_entrar"
+            app:layout_constraintEnd_toStartOf="parent"
+             android:text="@string/entrar"
+             android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aluno3"
+            />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="75px"
+        app:layout_constraintTop_toBottomOf="@id/bt_entrar"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/text_tela_Cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_cadastro"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="24dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginBottom="45dp"
+        android:padding="20dp"
+        />
+
+    //caso o código seja reaproveitado para edição de texto
+    // ou fazer campos de entrada de e-mail, senha, etc
+    //útil para cadastros, daí pode-se trocar por editText
+    <!--EditText
+        style="@style/Edit_Text"
+        android:id="@+id/aluno3"
+        android:inputType="email"
+        android:drawableRight="@drawable/ic_pessoa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@id/aluno2"
+        /-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
