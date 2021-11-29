@@ -3,6 +3,8 @@ package com.Alura.agenda;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -35,15 +37,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         List<String> alunos = new ArrayList<>(Arrays.asList("Adrian",
+                "Daniel","Pivete","Adrian",
+                "Daniel","Pivete","Adrian",
+                "Daniel","Pivete","Adrian",
                 "Daniel","Pivete")) ;
-        TextView primeiroAluno = findViewById(R.id.aluno);
-        TextView segundoAluno = findViewById(R.id.aluno2);
-        TextView terceiroAluno = findViewById(R.id.aluno3);
-
-        primeiroAluno.setText(alunos.get(0));
-        segundoAluno.setText(alunos.get(1));
-        terceiroAluno.setText(alunos.get(2));
-
+        ListView listaDeAlunos = findViewById(R.id.activity_main_lista_de_alunos);
+        listaDeAlunos.setAdapter(new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                alunos));
 
         //Toast: texto momentaneo, aviso
         //Toast.makeText(this, "Olá by: Adrian", Toast.LENGTH_SHORT).show();
