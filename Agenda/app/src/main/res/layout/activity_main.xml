@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@android:style/Theme.NoTitleBar"
-    android:background="@drawable/background">
-    <!-- theme: Remove  a barra de titulo-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:theme="@android:style/Theme.NoTitleBar">
+        <!-- theme: Remove  a barra de titulo-->
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/img"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/botao_adicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_input_add"
+            tools:layout_editor_absoluteX="315dp"
+            tools:layout_editor_absoluteY="659dp" />
 
-    <View
-        android:id="@+id/containerComponents"
-        style="@style/ContainerComponents"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo"/>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/containerComponents"
+            style="@style/ContainerComponents"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo" />
 
 
-    <!--TextView
+        <!--TextView
         style="@style/Edit_Text"
         android:id="@+id/aluno"
         android:hint="aluno"
@@ -45,18 +52,18 @@
         android:text="sou a pessoa"
         /-->
 
-    <ListView
-        style="@style/Edit_Text"
-        android:id="@+id/activity_main_lista_de_alunos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintTop_toTopOf="@id/containerComponents"
-        />
+        <ListView
+            android:id="@+id/activity_main_lista_de_alunos"
+            style="@style/Edit_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            app:layout_constraintEnd_toEndOf="@id/containerComponents"
+            app:layout_constraintStart_toStartOf="@id/containerComponents"
+            app:layout_constraintTop_toTopOf="@id/containerComponents" />
 
 
-    <!--TextView
+        <!--TextView
         style="@style/Edit_Text"
         android:id="@+id/aluno2"
         android:drawableRight="@drawable/ic_pessoa"
@@ -69,7 +76,7 @@
         /-->
 
 
-    <!--TextView
+        <!--TextView
         style="@style/Edit_Text"
         android:id="@+id/aluno3"
         android:drawableRight="@drawable/ic_pessoa"
@@ -81,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@id/aluno2"
         /-->
 
-         <!--androidx.appcompat.widget.AppCompatButton
+        <!--androidx.appcompat.widget.AppCompatButton
             style="@style/Button"
              android:id="@+id/bt_entrar"
             app:layout_constraintEnd_toStartOf="parent"
@@ -91,7 +98,7 @@
             app:layout_constraintTop_toBottomOf="@id/aluno3"
             /-->
 
-    <!--ProgressBar
+        <!--ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,7 +109,7 @@
         android:visibility="invisible"
         /-->
 
-    <!--TextView
+        <!--TextView
         android:id="@+id/text_tela_Cadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,7 +124,7 @@
         android:padding="20dp"
         /-->
 
-    <!--//caso o código seja reaproveitado para edição de texto
+        <!--//caso o código seja reaproveitado para edição de texto
     // ou fazer campos de entrada de e-mail, senha, etc
     //útil para cadastros, daí pode-se trocar por editText-->
         <!--EditText
@@ -133,5 +140,5 @@
         app:layout_constraintTop_toBottomOf="@id/aluno2"
         /-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

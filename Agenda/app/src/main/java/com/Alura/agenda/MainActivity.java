@@ -40,6 +40,10 @@ public class MainActivity extends Activity {
                 "Daniel","Pivete","Adrian",
                 "Daniel","Pivete","Adrian",
                 "Daniel","Pivete","Adrian",
+                "Daniel","Pivete","Pivete","Adrian",
+                "Daniel","Pivete","Adrian",
+                "Daniel","Pivete","Pivete","Adrian",
+                "Daniel","Pivete","Adrian",
                 "Daniel","Pivete")) ;
         ListView listaDeAlunos = findViewById(R.id.activity_main_lista_de_alunos);
         listaDeAlunos.setAdapter(new ArrayAdapter<String>(
