@@ -20,6 +20,7 @@
             android:contentDescription="adicionar novo aluno"
             android:clickable="true"
             android:focusable="true"
+            android:src="@drawable/ic_action_novo_aluno"
             app:srcCompat="@android:drawable/ic_input_add"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
