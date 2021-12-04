@@ -29,7 +29,7 @@ public class ListaAlunosActivity extends AppCompatActivity{
         */
 
         //a classe R faz um mapeamento de todos os resorces
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_lista_alunos);
 
         List<String> alunos = new ArrayList<>(Arrays.asList("Adrian",
                 "Daniel","Pivete","Adrian",
