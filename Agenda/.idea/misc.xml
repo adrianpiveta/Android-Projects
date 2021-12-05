@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android-Projects/Agenda/app/src/main/res/drawable-anydpi/ic_action_novo_aluno.xml" value="0.24114583333333334" />
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2682291666666667" />
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/drawable/background.xml" value="0.2682291666666667" />
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/drawable/button.xml" value="0.22135416666666666" />
@@ -10,7 +11,9 @@
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/drawable/edit_text.xml" value="0.2682291666666667" />
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/layout/activity_form_login.xml" value="0.2520833333333333" />
-        <entry key="..\:/Android-Projects/Agenda/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Android-Projects/Agenda/app/src/main/res/layout/activity_formulario_aluno.xml" value="0.2310177705977383" />
+        <entry key="..\:/Android-Projects/Agenda/app/src/main/res/layout/activity_lista_alunos.xml" value="0.25" />
+        <entry key="..\:/Android-Projects/Agenda/app/src/main/res/layout/activity_main.xml" value="0.67" />
         <entry key="..\:/Android-Projects/Agenda/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

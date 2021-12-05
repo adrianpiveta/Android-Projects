@@ -6,21 +6,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
         android:theme="@android:style/Theme.NoTitleBar">
-        <!-- theme: Remove  a barra de titulo-->
+        theme: Remove  a barra de titulo-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/botao_adicionar"
+            android:id="@+id/lista_alunos_fab_novo_aluno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="adicionar novo aluno"
             android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_action_novo_aluno"
             app:srcCompat="@android:drawable/ic_input_add"
-            tools:layout_editor_absoluteX="315dp"
-            tools:layout_editor_absoluteY="659dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            app:fabSize="normal"
+            />
+            <!--dp são utilizados por se basear na densidade de pixels permite
+            melhor adaptabilidade em diferentes android's, mais responsivo-->-
+            <!--fab size: muda o tamanho do float button-->
+            <!--wrap_content: preenche e vai crescendo de acordo com o
+            conteúdo interno
+            focusable: permite ser selecionado via tab,
+            recurso de acessibilidade
+            -->
+
 
         <ImageView
             android:id="@+id/logo"
@@ -32,7 +47,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/containerComponents"
+            android:id="@+id/containerListaAlunos"
             style="@style/ContainerComponents"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,15 +67,15 @@
         android:text="sou a pessoa"
         /-->
 
-        <ListView
-            android:id="@+id/activity_main_lista_de_alunos"
-            style="@style/Edit_Text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            app:layout_constraintEnd_toEndOf="@id/containerComponents"
-            app:layout_constraintStart_toStartOf="@id/containerComponents"
-            app:layout_constraintTop_toTopOf="@id/containerComponents" />
+    <ListView
+        android:id="@+id/activity_main_lista_de_alunos"
+        style="@style/Edit_Text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="50dp"
+        app:layout_constraintEnd_toEndOf="@id/containerListaAlunos"
+        app:layout_constraintStart_toStartOf="@id/containerListaAlunos"
+        app:layout_constraintTop_toTopOf="@id/containerListaAlunos" />
 
 
         <!--TextView
@@ -140,5 +155,5 @@
         app:layout_constraintTop_toBottomOf="@id/aluno2"
         /-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--/androidx.constraintlayout.widget.ConstraintLayout-->
 </RelativeLayout>
