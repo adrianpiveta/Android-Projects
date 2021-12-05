@@ -1,4 +1,4 @@
-package com.Alura.agenda;
+package com.Alura.agenda.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
