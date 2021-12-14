@@ -37,4 +37,10 @@ public class AlunoDAO {
         }
     }
 
+    public void remove(Aluno aluno){
+            if(aluno!=null){
+                alunos.remove(aluno);
+            }
+    }
+
 }

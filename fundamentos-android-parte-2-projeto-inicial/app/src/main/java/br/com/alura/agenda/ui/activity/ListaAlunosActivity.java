@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
 
     private final AlunoDAO dao = new AlunoDAO();
+    private ArrayAdapter<Aluno> adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         configuraFabNovoAluno();
         dao.salva(new Aluno("ze","4444","aaa@a"));
         dao.salva(new Aluno("jose","4444","aaa@a"));
-}
+    }
 
     private void configuraFabNovoAluno() {
         FloatingActionButton botaoNovoAluno = findViewById(R.id.activity_lista_alunos_fab_novo_aluno);
@@ -64,6 +67,16 @@ public class ListaAlunosActivity extends AppCompatActivity {
         final List<Aluno> alunos = dao.todos();
         configuraAdapter(listaDeAlunos, alunos);
         configuraLista(listaDeAlunos, alunos);
+        listaDeAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+                Aluno alunoEscolhido = (Aluno) adapterView.getItemAtPosition(posicao);
+                dao.remove(alunoEscolhido);
+                adapter.remove(alunoEscolhido);
+                //Toast.makeText(ListaAlunosActivity.this, "Aluno removido", Toast.LENGTH_SHORT);
+                return true;
+            }
+        });
     }
 
     private void configuraLista(ListView listaDeAlunos, List<Aluno> alunos) {
@@ -89,9 +102,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraAdapter(ListView listaDeAlunos, List<Aluno> alunos) {
-        listaDeAlunos.setAdapter(new ArrayAdapter<>(
+        adapter =  new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                alunos));
+                alunos);
+        listaDeAlunos.setAdapter(adapter);
     }
 }
