@@ -13,6 +13,10 @@ public class AlunoDAO {
     public void salva(Aluno aluno) {
         aluno.setId(contadorDeIds);
         alunos.add(aluno);
+        atualizaId();
+    }
+
+    private void atualizaId() {
         contadorDeIds++;
     }
 
@@ -32,4 +36,11 @@ public class AlunoDAO {
             alunos.set(posicaodoAluno,aluno);
         }
     }
+
+    public void remove(Aluno aluno){
+            if(aluno!=null){
+                alunos.remove(aluno);
+            }
+    }
+
 }
