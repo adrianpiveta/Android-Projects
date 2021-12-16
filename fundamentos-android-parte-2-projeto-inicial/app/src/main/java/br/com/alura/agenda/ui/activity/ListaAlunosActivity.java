@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +35,13 @@ public class ListaAlunosActivity extends AppCompatActivity {
         configuraListenerDeCliquePorItem();
         dao.salva(new Aluno("ze","4444","aaa@a"));
         dao.salva(new Aluno("jose","4444","aaa@a"));
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add("Remover");
+
     }
 
     private void configuraFabNovoAluno() {
@@ -67,17 +75,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
         final List<Aluno> alunos = dao.todos();
         configuraAdapter(listaDeAlunos);
         configuraListenerDeCliquePorItem(listaDeAlunos);
-        configuraCliqueLongo(listaDeAlunos);
+        registerForContextMenu(listaDeAlunos);
     }
 
-    private void configuraCliqueLongo(ListView listaDeAlunos) {
-        listaDeAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                return removeAluno(adapterView, posicao);
-            }
-        });
-    }
 
     private boolean removeAluno(AdapterView<?> adapterView, int posicao) {
         try {
@@ -85,7 +85,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
             dao.remove(alunoEscolhido);
             adapter.remove(alunoEscolhido);
             //Toast.makeText(ListaAlunosActivity.this, "Aluno removido", Toast.LENGTH_SHORT);
-            return true;
+            return false;
         }catch(Exception e) {
             return false;
         }
