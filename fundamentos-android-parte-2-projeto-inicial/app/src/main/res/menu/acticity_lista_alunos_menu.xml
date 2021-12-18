@@ -2,5 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Remover" />
+    <item android:title="Remover" android:id="@+id/acticity_lista_alunos_remover"/>
+    <item android:title="bla" android:id="@+id/acticity_lista_alunos_outro"/>
 </menu>
