@@ -22,23 +22,23 @@
     android:layout_height="wrap_content" android:padding="24dp"
     android:text="@string/question_text"/>
 
-<LinearLayout
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-<Button
+    <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/true_button"
     android:layout_margin="5dp"
     style="?android:attr/buttonBarButtonStyle" />
 
-<Button android:layout_width="wrap_content"
+    <Button android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/false_button"
     android:layout_margin="5dp"
     style="?android:attr/buttonBarButtonStyle"/>
-</LinearLayout>
     </LinearLayout>
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
