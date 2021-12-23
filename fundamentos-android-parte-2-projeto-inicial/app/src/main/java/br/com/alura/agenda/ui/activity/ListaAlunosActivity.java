@@ -36,13 +36,49 @@ public class ListaAlunosActivity extends AppCompatActivity {
         configuraListenerDeCliquePorItem();
         dao.salva(new Aluno("ze","4444","aaa@a"));
         dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+        dao.salva(new Aluno("ze","4444","aaa@a"));
+        dao.salva(new Aluno("jose","4444","aaa@a"));
+
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.acticity_lista_alunos_menu, menu);
-
     }
 
     private void configuraFabNovoAluno() {
@@ -79,11 +115,17 @@ public class ListaAlunosActivity extends AppCompatActivity {
         registerForContextMenu(listaDeAlunos);
     }
 
+
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Aluno alunoEscolhido = adapter.getItem(menuInfo.position);
-        remove(alunoEscolhido);
+
+        if(item.getItemId()==R.id.acticity_lista_alunos_remover) {
+            //sem o if, qualquer coisa no menu executa a mesma ação
+            AdapterView.AdapterContextMenuInfo menuInfo =
+                    (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            Aluno alunoEscolhido = adapter.getItem(menuInfo.position);
+            remove(alunoEscolhido);
+        }
         return super.onContextItemSelected(item);
     }
 
