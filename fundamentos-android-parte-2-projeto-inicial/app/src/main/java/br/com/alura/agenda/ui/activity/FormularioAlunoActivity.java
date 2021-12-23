@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +33,6 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formulario_aluno);
         setTitle(TITULO_APPBAR);
         inicializacaoDosCampos();
-        configuraBotaoSalvar();
 
         //Verifica se aluno existe
         aluno = (Aluno) dados.getSerializableExtra(CHAVE_ALUNO);
@@ -49,28 +50,32 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         }
     }
 
-    private void configuraBotaoSalvar() {
-        Button botaoSalvar = findViewById(R.id.activity_formulario_aluno_botao_salvar);
-        finalizaFormulario(botaoSalvar);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_formulario_aluno_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId=item.getItemId();
+        if(itemId ==  R.id.acticity_formulario_aluno_menu_salvar){
+            finalizaFormulario();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     //verifica o carregamento do formulario, finalizando com edição ou salvamento
-    private void finalizaFormulario(Button botaoSalvar) {
-        botaoSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    private void finalizaFormulario() {
                 preencheAluno();
                 if (aluno.temIdValido()) {
                     dao.edita(aluno);
                 } else {
                     dao.salva(aluno);
-                    Log.i("aa","aluno salvo");
                 }
                 finish();
             }
-        });
-    }
 
 
                      /*ew View.OnClickListener() {
