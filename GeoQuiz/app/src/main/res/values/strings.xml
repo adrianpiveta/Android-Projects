@@ -3,6 +3,6 @@
     <string name="false_button">False</string>
     <string name="true_button">True</string>
     <string name="question_text">Canbera is a capital of Australia</string>
-    <string name="correct_toast">Correto!</string>
+    <string name="correct_toast">Merry Christmas!</string>
     <string name="incorrect_toast">Incorreto!</string>
 </resources>
