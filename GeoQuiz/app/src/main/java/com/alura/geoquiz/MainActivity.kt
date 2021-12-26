@@ -15,12 +15,13 @@ class MainActivity : AppCompatActivity() {
         var falseButton = findViewById<View>(R.id.bt_falso)
 
         trueButton.setOnClickListener { view: View ->
-            Toast.makeText(
+            val toast = Toast.makeText(
                 this,
                 R.string.correct_toast,
                 Toast.LENGTH_SHORT
-                )
-                .show()
+                );
+            toast.setGravity(1, 1 ,0)
+            toast.show()
         }
 
         falseButton.setOnClickListener{ view: View ->
