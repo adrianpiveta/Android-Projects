@@ -44,26 +44,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <Button
+    <ImageButton
         android:id="@+id/preview_button"
+        android:src="@drawable/ic_arrow_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        tools:text="@string/preview_question"
-        android:text="@string/preview_question"
-        android:drawableLeft="@drawable/ic_arrow_left"
-        android:drawableTint="@color/white"
-        android:drawablePadding="5dp"/>
-    <Button
+        android:contentDescription="@string/preview_question"
+        />
+    <ImageButton
         android:id="@+id/next_button"
+        android:src="@drawable/ic_arrow_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        tools:text="@string/next_question"
-        android:text="@string/next_question"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:drawableTint="@color/white"
-        android:drawablePadding="5dp"/>
+        android:contentDescription="@string/next_question"
+        />
 </LinearLayout>
 </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

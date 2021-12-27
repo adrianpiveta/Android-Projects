@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
@@ -19,19 +20,19 @@ class MainActivity : AppCompatActivity() {
     private var currentIndex=0
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
-    private lateinit var nextButton : Button
-    private lateinit var previewButton : Button
+    private lateinit var nextButton : ImageButton
+    private lateinit var previewButton : ImageButton
     private lateinit var questionTextView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = "GeoQuiz by: Pi"
+        title = "GeoQuiz"
 
         trueButton = findViewById<Button>(R.id.bt_verdade)
         falseButton = findViewById<Button>(R.id.bt_falso)
-        previewButton = findViewById<Button>(R.id.preview_button)
-        nextButton = findViewById(R.id.next_button)
+        previewButton = findViewById<ImageButton>(R.id.preview_button)
+        nextButton = findViewById<ImageButton>(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
 
         trueButton.setOnClickListener { view: View ->
