@@ -10,5 +10,7 @@
         is the longest river of the world?</string>
     <string name="correct_toast">Right!</string>
     <string name="incorrect_toast">Wrong!</string>
-    <string name="Next_question">Next Question</string>
+    <string name="next_question">Next</string>
+    <string name="preview_question">Prev</string>
+
 </resources>

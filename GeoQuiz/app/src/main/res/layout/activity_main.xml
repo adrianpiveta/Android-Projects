@@ -40,13 +40,26 @@
         style="?android:attr/buttonBarButtonStyle"/>
 
     </LinearLayout>
-    <Button
-        android:id="@+id/next_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
-        tools:text="@string/Next_question"
-        android:text="@string/Next_question"/>
-
+        android:orientation="horizontal">
+    <ImageButton
+        android:id="@+id/preview_button"
+        android:src="@drawable/ic_arrow_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:contentDescription="@string/preview_question"
+        />
+    <ImageButton
+        android:id="@+id/next_button"
+        android:src="@drawable/ic_arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:contentDescription="@string/next_question"
+        />
+</LinearLayout>
 </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
