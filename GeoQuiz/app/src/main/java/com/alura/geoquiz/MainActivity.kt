@@ -20,32 +20,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton : Button
+    private lateinit var previewButton : Button
     private lateinit var questionTextView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = "GeoQuiz"
+        title = "GeoQuiz by: Pi"
 
         trueButton = findViewById<Button>(R.id.bt_verdade)
         falseButton = findViewById<Button>(R.id.bt_falso)
+        previewButton = findViewById<Button>(R.id.preview_button)
         nextButton = findViewById(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
 
         trueButton.setOnClickListener { view: View ->
-            val toast = Toast.makeText(
-                this,
-                R.string.correct_toast,
-                Toast.LENGTH_SHORT
-            )
-            toast.setGravity(1, 1 ,0)
-            toast.show()
-            Toast.makeText(
-                this,
-                R.string.correct_toast,
-                Toast.LENGTH_SHORT
-                )
-                .show()
            checkAnswer(true)
         }
 
@@ -53,21 +42,38 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
 
-        nextButton.setOnClickListener{
-            if((currentIndex+1)<questionBank.size){
-                currentIndex++
-            } else{
-                currentIndex=0
-            }
+        previewButton.setOnClickListener{view: View ->
+            previewQuestion()
+            updateQuestion()
+        }
 
+        nextButton.setOnClickListener{
+            nextQuestion()
             updateQuestion()
         }
         updateQuestion()
     }
 
+
+    private fun previewQuestion(){
+        if((currentIndex-1)<0){
+            currentIndex=questionBank.size-1
+        } else{
+            currentIndex--
+        }
+
+    }
+    private fun nextQuestion(){
+        if((currentIndex+1)<questionBank.size){
+            currentIndex++
+        } else{
+            currentIndex=0
+        }
+    }
     private fun updateQuestion() {
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
+
     }
 
     private fun checkAnswer(userAnswer: Boolean){
@@ -78,7 +84,8 @@ class MainActivity : AppCompatActivity() {
         } else{
             R.string.incorrect_toast
         }
-
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+        nextQuestion()
+        updateQuestion()
     }
 }
