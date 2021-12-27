@@ -2,7 +2,13 @@
     <string name="app_name">GeoQuiz</string>
     <string name="false_button">False</string>
     <string name="true_button">True</string>
-    <string name="question_text">Canbera is a capital of Australia</string>
-    <string name="correct_toast">Merry Christmas!</string>
-    <string name="incorrect_toast">Incorreto!</string>
+    <string name="question_australia">Canbera is a capital of Australia</string>
+    <string name="question_rio">Rio is a capital of Rio de Janeiro</string>
+    <string name="question_sampa">Santos is a capital of Sao paulo</string>
+    <string name="question_bahia">Porto Alegre is a capital of Bahia</string>
+    <string name="question_amazonas">The Amazon river\'
+        is the longest river of the world?</string>
+    <string name="correct_toast">Right!</string>
+    <string name="incorrect_toast">Wrong!</string>
+    <string name="Next_question">Next Question</string>
 </resources>
