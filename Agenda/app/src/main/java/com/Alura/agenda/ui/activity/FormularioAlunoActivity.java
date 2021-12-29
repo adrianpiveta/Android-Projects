@@ -37,7 +37,6 @@ public class FormularioAlunoActivity extends AppCompatActivity {
                 salva(aluno, dao);
                 startActivity(new Intent(FormularioAlunoActivity.this, ListaAlunosActivity.class));
 
-
                 //Toast.makeText(FormularioAlunoActivity.this, aluno.getEmail() +aluno.getNome()+aluno.getTelefone() , Toast.LENGTH_SHORT).show();
                 //Caso queira criar uma aviso flutuante
                 //Toast.makeText(FormularioAlunoActivity.this, "clicado", Toast.LENGTH_SHORT).show();

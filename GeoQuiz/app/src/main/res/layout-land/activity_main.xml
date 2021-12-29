@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/question_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="330dp"
+        android:padding="24dp"
+        android:text="@string/question_australia"
+        app:layout_constraintEnd_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="@id/question_text_view"
+        android:padding="100dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/bt_falso"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/question_text_view"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/false_button" />
+
+
+
+        <Button
+            android:id="@+id/bt_verdade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/true_button" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+
+
+
+        <ImageButton
+            android:id="@+id/preview_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_margin="15dp"
+            app:layout_constraintStart_toStartOf="@id/bt_falso"
+            android:contentDescription="@string/preview_question"
+            android:src="@drawable/ic_arrow_left" />
+
+        <ImageButton
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/next_question"
+            android:src="@drawable/ic_arrow_right" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -2,6 +2,7 @@ package com.alura.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -23,9 +24,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nextButton : ImageButton
     private lateinit var previewButton : ImageButton
     private lateinit var questionTextView : TextView
+    private var correctQuestions=0.000
+    private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
         title = "GeoQuiz"
 
@@ -55,6 +59,28 @@ class MainActivity : AppCompatActivity() {
         updateQuestion()
     }
 
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart() called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume() called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause() called")}
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop() called") }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy() called") }
+
 
     private fun previewQuestion(){
         if((currentIndex-1)<0){
@@ -68,6 +94,9 @@ class MainActivity : AppCompatActivity() {
         if((currentIndex+1)<questionBank.size){
             currentIndex++
         } else{
+            correctQuestions=(correctQuestions/questionBank.size)*100
+            Toast.makeText(this,correctQuestions.toString(),Toast.LENGTH_LONG).show()
+            correctQuestions=0.000
             currentIndex=0
         }
     }
@@ -84,6 +113,9 @@ class MainActivity : AppCompatActivity() {
             R.string.correct_toast
         } else{
             R.string.incorrect_toast
+        }
+        if (userAnswer == correctAnswer){
+            correctQuestions++
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
         nextQuestion()
