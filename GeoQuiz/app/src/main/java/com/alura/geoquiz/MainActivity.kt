@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTextView : TextView
     private var correctQuestions=0.000
     private val TAG = "MainActivity"
-    private val questionsAnswered= MutableList <Question>(Question("aaa",true))
+    private var questionsAnswered= mutableListOf<Question>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +63,12 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart() called")
+    }
+
+    override fun onRestart(){
+        super.onRestart()
+        correctQuestions=0.000
+        questionsAnswered= mutableListOf<Question>()
     }
 
     override fun onResume() {
@@ -103,23 +108,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun updateQuestion() {
+        falseButton.setEnabled(true)
+        trueButton.setEnabled(true)
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
-        Log.d("",questionsAnswered.toString())
-        for( question in questionBank){
+        if (questionBank.size==questionsAnswered.size){
+            Toast.makeText(this,"questionary restart", Toast.LENGTH_LONG).show()
+            correctQuestions=0.000
+            questionsAnswered= mutableListOf<Question>()
+            currentIndex=0
+        }
             for(questionAnswered in questionsAnswered){
                 Log.d("a",questionAnswered.textResId.toString())
-                Log.d("a",question.textResId.toString())
-                if (questionAnswered.textResId.toString().equals(question.textResId.toString())){
+                if (questionAnswered.textResId.toString().equals(questionTextResId.toString())){
                     falseButton.setEnabled(false)
                     trueButton.setEnabled(false)
                     Log.d("a","entrei no IF")
                 }
             }
-            if (questionBank.size==questionsAnswered.size){
-                Toast.makeText(this,"questionary restart", Toast.LENGTH_LONG).show()
-            }
-        }
+
     }
 
     private fun checkAnswer(userAnswer: Boolean){
@@ -133,7 +140,7 @@ class MainActivity : AppCompatActivity() {
         if (userAnswer == correctAnswer){
             correctQuestions++
         }
-        questionsAnswered.plus(questionBank[currentIndex])
+        questionsAnswered.add(questionBank[currentIndex])
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
         nextQuestion()
         updateQuestion()
