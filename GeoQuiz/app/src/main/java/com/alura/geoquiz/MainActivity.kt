@@ -8,17 +8,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity() {
 
-    private val questionBank = listOf(
-        Question(R.string.question_amazonas, true),
-        Question(R.string.question_australia, true),
-        Question(R.string.question_bahia, false),
-        Question(R.string.question_sampa, false),
-        Question(R.string.question_rio, true))
 
-    private var currentIndex=0
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton : ImageButton
@@ -33,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
         title = "GeoQuiz"
+
+        //é ums intância da QuizviewModel, na qual retorna um provider, retorna
+        val provider: ViewModelProvider = ViewModelProviders.of(this)
+        //uma QuizViewModel associada a atividade atual
+        val quizViewModel = provider.get(QuizViewModel::class.java)
+        Log.d(TAG,"Got a QuizViewModel: $quizViewModel")
 
         trueButton = findViewById<Button>(R.id.bt_verdade)
         falseButton = findViewById<Button>(R.id.bt_falso)
