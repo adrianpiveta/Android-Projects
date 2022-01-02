@@ -8,17 +8,17 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity() {
 
-    private val questionBank = listOf(
-        Question(R.string.question_amazonas, true),
-        Question(R.string.question_australia, true),
-        Question(R.string.question_bahia, false),
-        Question(R.string.question_sampa, false),
-        Question(R.string.question_rio, true))
+    //by lazy: somente quando necessário vai acessar este método
+    // e fazer a atribuição
+    private val quizViewModel: QuizViewModel by lazy {
+        //Se tentar chamar a linha abaixo antes do onCreate, vai dae IlegalStateException
+        ViewModelProviders.of(this).get(QuizViewModel::class.java)
+    }
 
-    private var currentIndex=0
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
     private lateinit var nextButton : ImageButton
@@ -33,6 +33,14 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
         title = "GeoQuiz"
+        /*
+        //é ums intância da QuizviewModel, na qual retorna um provider, retorna
+        val provider: ViewModelProvider = ViewModelProviders.of(this)
+        //uma QuizViewModel associada a atividade atual
+        val quizViewModel = provider.get(QuizViewModel::class.java)
+        Log.d(TAG,"Got a QuizViewModel: $quizViewModel")
+        */
+
 
         trueButton = findViewById<Button>(R.id.bt_verdade)
         falseButton = findViewById<Button>(R.id.bt_falso)
@@ -91,17 +99,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun previewQuestion(){
         if((currentIndex-1)<0){
-            currentIndex=questionBank.size-1
+            currentIndex= quizViewModel.getQuestionBankSize() -1
         } else{
             currentIndex--
         }
 
     }
     private fun nextQuestion(){
-        if((currentIndex+1)<questionBank.size){
+        if((currentIndex+1)<quizViewModel.getQuestionBankSize()){
             currentIndex++
+            quizViewModel.moveToNext()
         } else{
-            correctQuestions=(correctQuestions/questionBank.size)*100
+            correctQuestions=(correctQuestions/quizViewModel.getQuestionBankSize())*100
             Toast.makeText(this,correctQuestions.toString(),Toast.LENGTH_LONG).show()
             correctQuestions=0.000
             currentIndex=0
@@ -110,27 +119,26 @@ class MainActivity : AppCompatActivity() {
     private fun updateQuestion() {
         falseButton.setEnabled(true)
         trueButton.setEnabled(true)
-        val questionTextResId = questionBank[currentIndex].textResId
+        var questionTextResId = quizViewModel.getQuestionByIndice(currentIndex).textResId
         questionTextView.setText(questionTextResId)
-        if (questionBank.size==questionsAnswered.size){
+        if (quizViewModel.getQuestionBankSize() ==questionsAnswered.size){
             Toast.makeText(this,"questionary restart", Toast.LENGTH_LONG).show()
             correctQuestions=0.000
             questionsAnswered= mutableListOf<Question>()
             currentIndex=0
+            updateQuestion()
         }
             for(questionAnswered in questionsAnswered){
                 Log.d("a",questionAnswered.textResId.toString())
                 if (questionAnswered.textResId.toString().equals(questionTextResId.toString())){
                     falseButton.setEnabled(false)
                     trueButton.setEnabled(false)
-                    Log.d("a","entrei no IF")
                 }
             }
-
     }
 
     private fun checkAnswer(userAnswer: Boolean){
-        val correctAnswer = questionBank[currentIndex].answer
+        val correctAnswer = quizViewModel.currentQuestionAnswer
 
         val messageResId = if (userAnswer == correctAnswer){
             R.string.correct_toast
@@ -140,7 +148,7 @@ class MainActivity : AppCompatActivity() {
         if (userAnswer == correctAnswer){
             correctQuestions++
         }
-        questionsAnswered.add(questionBank[currentIndex])
+        questionsAnswered.add(quizViewModel.getCurrentQuestion())
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
         nextQuestion()
         updateQuestion()
