@@ -12,7 +12,9 @@ private val questionBank = listOf(
     Question(R.string.question_sampa, false),
     Question(R.string.question_rio, true))
 
-private var currentIndex=0
+var currentIndex=0
+
+
 class QuizViewModel : ViewModel() {
     init{
         Log.d(TAG,"qvm started")
@@ -21,5 +23,31 @@ class QuizViewModel : ViewModel() {
     override fun onCleared(){
         super.onCleared() //chamada método pai
         Log.d(TAG,"instance be destroyed") //LOG no Logcat
+    }
+    val currentQuestionAnswer: Boolean
+        get() = questionBank[currentIndex].answer
+
+    val currentQuestionText: Int
+        get() = questionBank[currentIndex].textResId
+
+    fun getQuestionBankSize(): Int {
+        return questionBank.size
+    }
+
+    fun getCurrentQuestion(): Question{
+        return questionBank[currentIndex]
+    }
+
+    //declaramos nome: tipo
+    fun getQuestionByIndice(indice: Int): Question{
+        if(indice< (questionBank.size)){
+            return questionBank.get(indice)
+        }
+        return questionBank.get(0)
+    }
+
+
+    fun moveToNext(){
+        currentIndex = (currentIndex++) % questionBank.size
     }
 }

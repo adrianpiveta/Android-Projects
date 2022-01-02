@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
 
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="330dp"
+        android:layout_marginTop="150dp"
         android:padding="24dp"
         android:text="@string/question_australia"
         app:layout_constraintEnd_toStartOf="parent" />
@@ -21,20 +21,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="15dp"
-        android:layout_marginEnd="@id/question_text_view"
-        android:padding="100dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="100dp">
 
 
         <Button
             android:id="@+id/bt_falso"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/question_text_view"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@string/false_button" />
-
+            android:text="@string/false_button"
+            app:layout_constraintStart_toStartOf="@id/question_text_view" />
 
 
         <Button
@@ -51,10 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        >
-
-
+        android:gravity="center_horizontal">
 
         <ImageButton
             android:id="@+id/preview_button"
@@ -73,7 +68,6 @@
             android:layout_margin="15dp"
             android:contentDescription="@string/next_question"
             android:src="@drawable/ic_arrow_right" />
-
     </LinearLayout>
 
 </RelativeLayout>
