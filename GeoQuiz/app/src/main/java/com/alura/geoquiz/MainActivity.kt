@@ -2,6 +2,7 @@ package com.alura.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -27,12 +28,18 @@ class MainActivity : AppCompatActivity() {
     private var correctQuestions=0.000
     private val TAG = "MainActivity"
     private var questionsAnswered= mutableListOf<Question>()
+    private val KEY_INDEX = "index"
+    private val KEY_ARRAY = "array"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
         title = "GeoQuiz"
+
+        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
+
         /*
         //é ums intância da QuizviewModel, na qual retorna um provider, retorna
         val provider: ViewModelProvider = ViewModelProviders.of(this)
@@ -66,6 +73,12 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
         updateQuestion()
+    }
+
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        Log.i(TAG, "onSaveInstanceState")
+        savedInstanceState.putInt(KEY_INDEX, quizViewModel.getCurrentIndex())
     }
 
     override fun onStart() {

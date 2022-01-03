@@ -30,10 +30,26 @@ class QuizViewModel : ViewModel() {
     val currentQuestionText: Int
         get() = questionBank[currentIndex].textResId
 
+    fun setCurrentIndex(index: Int): Boolean{
+        if(questionBank.size>index || index>=0){
+            currentIndex=index
+            return true
+        }
+        else{
+            currentIndex=0
+            return false
+        }
+    }
+
     fun getQuestionBankSize(): Int {
         return questionBank.size
     }
 
+    fun getCurrentIndex(): Int{
+        return currentIndex
+    }
+
+    //formato de Question
     fun getCurrentQuestion(): Question{
         return questionBank[currentIndex]
     }
