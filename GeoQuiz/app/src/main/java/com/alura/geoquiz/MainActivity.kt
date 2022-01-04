@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG,"Got a QuizViewModel: $quizViewModel")
         */
 
-
         trueButton = findViewById<Button>(R.id.bt_verdade)
         falseButton = findViewById<Button>(R.id.bt_falso)
         previewButton = findViewById<ImageButton>(R.id.preview_button)
