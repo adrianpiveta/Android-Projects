@@ -12,5 +12,9 @@
     <string name="incorrect_toast">Wrong!</string>
     <string name="next_question">Next</string>
     <string name="preview_question">Prev</string>
+    <string name="warning_text">You really want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="judment_toast">Cheating is wrong</string>
 
 </resources>
