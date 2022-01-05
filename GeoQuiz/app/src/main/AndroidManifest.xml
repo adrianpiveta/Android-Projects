@@ -10,9 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoQuiz">
-        <activity
+        <!--Criação automática por parte do wizard-->
+        <!--activity
+            <-.CheatActivity é a mesma coisa de escrever o nome completo com.a.b.b.c.v
+                .CheatActivity-->
             android:name=".CheatActivity"
-            android:exported="false" />
+            android:exported="false" /-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
