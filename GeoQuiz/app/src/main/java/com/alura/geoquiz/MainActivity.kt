@@ -1,5 +1,6 @@
 package com.alura.geoquiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -24,12 +25,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var falseButton: Button
     private lateinit var nextButton : ImageButton
     private lateinit var previewButton : ImageButton
+    private lateinit var cheatButton: Button
     private lateinit var questionTextView : TextView
     private var correctQuestions=0.000
     private val TAG = "MainActivity"
     private var questionsAnswered= mutableListOf<Question>()
     private val KEY_INDEX = "index"
-    private val KEY_ARRAY = "array"
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,13 +50,15 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG,"Got a QuizViewModel: $quizViewModel")
         */
 
+        //Localiza as views, a classe R é como se fosse a chefe das classes do android
         trueButton = findViewById<Button>(R.id.bt_verdade)
         falseButton = findViewById<Button>(R.id.bt_falso)
         previewButton = findViewById<ImageButton>(R.id.preview_button)
         nextButton = findViewById<ImageButton>(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
+        cheatButton= findViewById(R.id.cheat_button)
 
-        trueButton.setOnClickListener { view: View ->
+        trueButton.setOnClickListener {
            checkAnswer(true)
         }
 
@@ -70,6 +74,20 @@ class MainActivity : AppCompatActivity() {
         nextButton.setOnClickListener{
             nextQuestion()
             updateQuestion()
+        }
+
+        /*um intent é um objeto que o componente pode usar para se comunicar com o OS
+        //quando passamos uma activity::class.java, referenciamos a classe que deve ser iniciada
+        e em qual pacote a classe pode ser encontrada
+        O activityManager verifica o manifest em busca de uma Class com o mesmo nome, se não
+        encontrar, ele lança uma exception de não encontrada, que crasha o app
+        Essa intent criada é explícita, usada para iniciar activities (utilizada para iniciar
+            activity da mesma aplicação)
+        Quando se deseja iniciar uma activity de outra aplicação, se utiliza Intent implícita
+        Quando inicia a activity do cheat, a Mainactivity informa a questão corrente
+        */
+        cheatButton.setOnClickListener{
+            startActivity(Intent(this, CheatActivity::class.java))
         }
         updateQuestion()
     }

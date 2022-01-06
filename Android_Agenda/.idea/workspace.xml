@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a2dcbd8-77b5-4fe6-b0c3-f7560c64d88b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../GeoQuiz/app/src/main/res/layout-land/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GeoQuiz/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GeoQuiz/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GeoQuiz/app/src/main/java/com/alura/geoquiz/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../GeoQuiz/app/src/main/java/com/alura/geoquiz/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WhatsApp Ptt 2021-12-27 at 08.49.53.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GeoQuiz/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GeoQuiz/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyAgenda/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyAgenda/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyAgenda/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyAgenda/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

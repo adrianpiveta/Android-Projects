@@ -13,9 +13,13 @@
         <!--Criação automática por parte do wizard-->
         <!--activity
             <-.CheatActivity é a mesma coisa de escrever o nome completo com.a.b.b.c.v
-                .CheatActivity-->
+                .CheatActivity
             android:name=".CheatActivity"
             android:exported="false" /-->
+        <!--Exported diz a respeito de poder iniciar ou não a aplicação, quando é falso, somente
+        a própria aplicação pode lança-lo-->
+        <activity android:name=".CheatActivity">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
