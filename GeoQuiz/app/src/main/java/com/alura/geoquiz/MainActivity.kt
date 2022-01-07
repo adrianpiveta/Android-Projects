@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
     private var questionsAnswered= mutableListOf<Question>()
     private val KEY_INDEX = "index"
+    private val REQUEST_CODE_CHEAT = 0
 
 
 
@@ -85,9 +86,13 @@ class MainActivity : AppCompatActivity() {
             activity da mesma aplicação)
         Quando se deseja iniciar uma activity de outra aplicação, se utiliza Intent implícita
         Quando inicia a activity do cheat, a Mainactivity informa a questão corrente
+        * A atividade iniciada para um resultado, envia um código de requisição que será
+        *   recebido pela classe filha
+        *
         */
         cheatButton.setOnClickListener{
             startActivity(Intent(this, CheatActivity::class.java))
+            //startActivityForResult(intent,REQUEST_CODE_CHEAT)
         }
         updateQuestion()
     }
