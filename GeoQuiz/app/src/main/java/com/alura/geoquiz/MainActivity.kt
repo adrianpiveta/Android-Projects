@@ -1,6 +1,8 @@
 package com.alura.geoquiz
 
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -91,6 +93,12 @@ class MainActivity : AppCompatActivity() {
         *
         */
         cheatButton.setOnClickListener{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                //verifica a versão do android, SDK int, que é a versão do android
+                // com a versão M (inicial de Marshmallow)
+                //listed at developer.android.com/reference/android/os/Build.VERSION_CODES.html
+
+            }
             startActivity(Intent(this, CheatActivity::class.java))
             //startActivityForResult(intent,REQUEST_CODE_CHEAT)
         }
