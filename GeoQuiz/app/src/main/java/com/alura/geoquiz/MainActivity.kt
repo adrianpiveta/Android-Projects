@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var previewButton : ImageButton
     private lateinit var cheatButton: Button
     private lateinit var questionTextView : TextView
+    private lateinit var androidVersionTextView: TextView
     private var correctQuestions=0.000
     private val TAG = "MainActivity"
     private var questionsAnswered= mutableListOf<Question>()
@@ -60,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         nextButton = findViewById<ImageButton>(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
         cheatButton= findViewById(R.id.cheat_button)
+        androidVersionTextView = findViewById(R.id.android_version_text_view)
 
         trueButton.setOnClickListener {
            checkAnswer(true)
@@ -103,6 +105,8 @@ class MainActivity : AppCompatActivity() {
             //startActivityForResult(intent,REQUEST_CODE_CHEAT)
         }
         updateQuestion()
+
+        androidVersionTextView.setText("Versão:" +Build.VERSION.SDK_INT.toString())
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
