@@ -1,7 +1,7 @@
 package com.bignerdranch.android.criminalintent
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         * Quando uma atividade é destruída, os fragmentos são mortos, então é necessário recria-los.
         * */
         if (currentFragment == null) {
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
             supportFragmentManager
                 .beginTransaction() //inicio
                 .add(R.id.fragment_container, fragment) // destino (id) e o fragmento em si

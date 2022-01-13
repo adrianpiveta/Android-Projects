@@ -1,6 +1,6 @@
 package com.bignerdranch.android.criminalintent
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 
 // dois ponto ":" extende
