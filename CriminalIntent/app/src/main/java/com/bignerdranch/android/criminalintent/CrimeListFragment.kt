@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 private const val TAG = "CrimeListFragment"
-private lateinit var crimeRecyclerView: RecyclerView
+
 
 class CrimeListFragment : Fragment() {
+
+    private lateinit var crimeRecyclerView: RecyclerView
+    private var adapter: CrimeAdapter?=null
 
     private val crimeListViewModel: CrimeListViewModel by lazy {
         ViewModelProviders.of(this).get(CrimeListViewModel::class.java)
@@ -43,6 +46,7 @@ class CrimeListFragment : Fragment() {
 
         crimeRecyclerView = view.findViewById(R.id.crime_recycler_view) as RecyclerView
         crimeRecyclerView.layoutManager = LinearLayoutManager(context)
+        updateUI()
         return view
     }
     //ViewHolder armazena referencias a itens views
@@ -50,6 +54,7 @@ class CrimeListFragment : Fragment() {
     private inner class CrimeHolder(view: View)
         : RecyclerView.ViewHolder(view){
 
+        //i changed from itemView to view
             var titleTextView: TextView = itemView.findViewById(R.id.crime_title)
             var dateTextView: TextView = itemView.findViewById(R.id.crime_date)
         }
@@ -64,6 +69,7 @@ class CrimeListFragment : Fragment() {
                 return CrimeHolder(view)
             }
 
+        //retorna quantos itens possui
         override fun getItemCount()= crimes.size
 
         //Responvável por popular uma Holder com uma posição do crime da lista
@@ -75,4 +81,10 @@ class CrimeListFragment : Fragment() {
             }
         }
         }
+
+    private fun updateUI(){
+        val crimes = crimeListViewModel.crimes
+        adapter=CrimeAdapter(crimes)
+        crimeRecyclerView.adapter= adapter
+    }
 }
