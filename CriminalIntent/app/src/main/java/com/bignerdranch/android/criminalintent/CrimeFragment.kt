@@ -2,7 +2,7 @@ package com.bignerdranch.android.criminalintent
 
 
 //import android.support.v4.app.Fragment //Verificar se é a importacão correta
-import android.app.Fragment
+import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -39,7 +39,7 @@ class CrimeFragment : Fragment() {
 
         //View.findView é a unica função suportada pelo fragmento, ao contrário de activity
         titleField = view.findViewById(R.id.crime_title) as EditText
-        dateButton = view.findViewById(R.id.crime_date) as Button //importa como botão
+        dateButton = view.findViewById(R.id.crime_date) as Button
         solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox //importa checkbox
 
         dateButton.apply {
@@ -73,25 +73,19 @@ class CrimeFragment : Fragment() {
                 s: CharSequence?,
                 start: Int,
                 before: Int,
-                count: Int)
-            {
-                crime.title=s.toString()
+                count: Int
+            ){
+                crime.title = s.toString()
             }
             override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
+                //TODO("Not yet implemented")
             }
         }
 
         //aplica alteração quando há mudança, recebendo isChecked na variável isSolved
-        solvedCheckBox.apply {
+        /*solvedCheckBox.apply {
             setOnCheckedChangeListener { _, isChecked ->
-                crime.isSolved = isChecked
-            }
-        }
-
-
-
-
+                crime.isSolved = isChecked*/
         titleField.addTextChangedListener(titleWatcher)
     }
 }
