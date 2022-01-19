@@ -33,7 +33,8 @@ class MainActivity : Activity() {
 
         btn_calcular.setOnClickListener {
             val sexo = spn_sexo.selectedItem as String
-            val idade = txt_idade.text.toString().toInt()
+            var idade=0
+            idade = txt_idade.text.toString().toInt()
             if(idade != null){
                 Log.d("batata",txt_idade.text.toString().toInt().toString())
                 var resultado=0
