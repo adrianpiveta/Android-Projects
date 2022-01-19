@@ -30,13 +30,13 @@ falta para sua aposentadoria!"
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Digite sua idade:"
+        android:text="Escolha sua idade:"
         />
 
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_idade"
+        android:id="@+id/spn_idade"
         />
 
     <Button
