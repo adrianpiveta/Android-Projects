@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="livrokotlin.com.br.calculoaposentadoria">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CalculoAposentadoria">
+
+        <!--Exported se refere a visibilidade para outros apps-->
+        <activity android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <!--Filtrod de intenção filtra o que pode ser alvo desse
+                app, em action definimos a ação dessa activity
+                em category, escolhemos alguma categoria de app (utilizada
+                para o sistema dar opção de abrir arquivos por ele, como
+                o caso de player de musica-->
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+        </activity>
+
+
+    </application>
+</manifest>
