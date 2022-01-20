@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Lista_de_compras.iml" filepath="$PROJECT_DIR$/.idea/modules/Lista_de_compras.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lista_de_compras.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lista_de_compras.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Listadecompras.iml" filepath="$PROJECT_DIR$/.idea/modules/Listadecompras.iml" />
     </modules>
   </component>
 </project>
