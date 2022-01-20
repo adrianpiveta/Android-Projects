@@ -1,0 +1,2 @@
+livrokotlin/com/br/BuildConfig.java
+ livrokotlin.com.br.BuildConfig
