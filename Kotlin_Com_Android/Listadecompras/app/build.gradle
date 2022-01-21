@@ -1,0 +1,113 @@
+/*
+buildscript {
+    ext.kotlin_version= '1.6.20'
+    repositories {
+        google()
+        maven{url 'https://maven.google.com'}
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:3.6.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20"
+        classpath	 "org.jetbrains.kotlin:kotlin-androidextensions:$kotlin_version"
+    }
+}
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "livrokotlin.com.br"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+        ext.kotlin_version= '1.3.72'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.+'
+    apply	plugin:	'kotlin-android-extensions'
+    //classpath	 "org.jetbrains.kotlin:kotlin-androidextensions:$kotlin_version"
+    //classpath "com.android.tools.build:gradle:3.3.0"
+    //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+*/
+apply plugin: 'com.android.application'
+def AAVersion = '4.0.0'
+def JacksonVersion = '2.6.0'
+def GPSVersion = '6.5.87'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar']) //This is where your JARs go
+
+    implementation 'com.android.support:appcompat-v7:23.0.0'
+    implementation 'com.android.support:design:23.0.0'
+    implementation 'com.android.support:recyclerview-v7:23.0.0'
+    implementation 'com.android.support:preference-v7:23.0.0'
+}
+
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "appname"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+}
