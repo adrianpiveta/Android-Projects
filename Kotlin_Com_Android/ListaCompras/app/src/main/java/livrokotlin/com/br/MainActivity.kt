@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,15 +26,7 @@ class MainActivity : AppCompatActivity() {
         //definindo	o	adaptador	na	lista
         list_view_produtos.adapter = produtosAdapter
 
-        btn_inserir.setOnClickListener {
-            val produto = txt_produto.text.toString()
-            if (produto.isNotEmpty()) {
-                produtosAdapter.add(produto)
-            } else {
-                txt_produto.error = "Digite um produto!"//Mostra erro na caixa de escrita
-            }
-            txt_produto.text.clear()
-        }
+
 
         list_view_produtos.isClickable = true
 /*
@@ -63,12 +57,56 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, produtosAdapter.getItem(position).toString(), Toast.LENGTH_SHORT)
                 .show()
         }*/
+        // Matriz quadrada
+        var matriz = ArrayList<List<Int>>()
 
+
+        // matriz quadrada
+        /*
+        var i=5
+        var j=5
+        for (x in 1..i) {
+            val matrizaux = ArrayList<Int>()
+            for (y in 1..j) { //i é linha
+                matrizaux.add(0)
+            }
+            matriz.add(matrizaux)
+        }
+        */
+
+        var i=5
+        var j=5
+        for (x in 1..i) {
+            val matrizaux = ArrayList<Int>()
+            for (y in 1..j) { //i é linha
+                if( x <=y ){
+                    matrizaux.add(Random.nextInt(1,9))
+                }
+                else{
+                    matrizaux.add(0)
+                }
+            }
+            matriz.add(matrizaux)
+        }
+
+        txt_total.setText(escreveBonitinho(matriz))
+
+    }
+
+    private fun escreveBonitinho(matriz: ArrayList<List<Int>>): String {
+        var retorno=""
+        for(x in matriz){
+            for (y in x){
+                retorno+=(y.toString() + " ")
+            }
+            retorno+="\n"
+        }
+        return retorno
     }
 }
 
 private fun ListView.onItemLongClickListener(value: (AdapterView<*>, View, Int, Long) -> Boolean) {
-
+    Toast.makeText( context, "Clicou", Toast.LENGTH_SHORT).show()
 }
 /*
 public class MainActivity extends Activity {
