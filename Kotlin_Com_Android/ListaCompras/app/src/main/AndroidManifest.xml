@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListaDeCompras">
         <activity
+            android:name=".CadastroActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+            <!--Nesse caso, define MainActivity como mãe de cadastro-->
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

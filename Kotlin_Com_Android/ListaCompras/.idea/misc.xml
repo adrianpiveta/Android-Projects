@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android-Projects/Kotlin_Com_Android/ListaCompras/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Android-Projects/Kotlin_Com_Android/ListaCompras/app/src/main/res/layout/activity_cadastro.xml" value="0.1" />
+        <entry key="..\:/Android-Projects/Kotlin_Com_Android/ListaCompras/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>
