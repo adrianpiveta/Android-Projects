@@ -1,5 +1,6 @@
 package livrokotlin.com.br
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             //retorno	indicando	que	o	click	foi	realizado	com	suc
             true
         }*/
-
+    /*
         list_view_produtos.onItemLongClickListener{adapterView:	AdapterView<*>,	view:	View,	position:	Int,	id:	Long	->
             //buscando	o	item	clicado
             val	item	=	produtosAdapter.getItem(position)
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             list_view_produtos.adapter=produtosAdapter
             Toast.makeText(this, "deleted", Toast.LENGTH_SHORT).show()
             //retorno	indica
-            true}
+            true} */
 
         /*list_view_produtos.setOnItemClickListener { parent, view, position, id ->
             position
@@ -59,6 +61,12 @@ class MainActivity : AppCompatActivity() {
         }*/
         // Matriz quadrada
         var matriz = ArrayList<List<Int>>()
+
+        btn_adicionar.setOnClickListener {
+            val intent  = Intent(this, CadastroActivity::class.java)
+
+            startActivity(intent)
+        }
 
 
         // matriz quadrada
@@ -74,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
         */
 
+        /*
         var i=5
         var j=5
         for (x in 1..i) {
@@ -103,11 +112,11 @@ class MainActivity : AppCompatActivity() {
         }
         return retorno
     }
+    */
+
+}
 }
 
-private fun ListView.onItemLongClickListener(value: (AdapterView<*>, View, Int, Long) -> Boolean) {
-    Toast.makeText( context, "Clicou", Toast.LENGTH_SHORT).show()
-}
 /*
 public class MainActivity extends Activity {
  ListView listview; String[] subjects = new String[] { "Android", "PHP", "Blogger", "WordPress", "SEO" };
