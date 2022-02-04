@@ -11,7 +11,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@android:drawable/ic_menu_camera"
-        android:id="@+id/img_sem_foto"
+        android:id="@+id/img_item_foto"
         />
 
     <TextView
