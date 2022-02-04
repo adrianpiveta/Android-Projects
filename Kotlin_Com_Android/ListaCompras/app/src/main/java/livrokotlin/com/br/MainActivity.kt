@@ -1,6 +1,10 @@
 package livrokotlin.com.br
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,18 +15,35 @@ import android.widget.ListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
+
+    val COD_IMAGE = 404
+    var imageBitMap: Bitmap? = null //nullavel
+
+    override fun onResume() {
+        super.onResume()
+
+        val adapter = list_view_produtos.adapter as ProdutoAdapter // puxa adaptador da lista como ProdutoAdapter
+        adapter.clear()//limpa a lista de produtos existentes
+        adapter.addAll(produtosGlobal)// popula o adapter com a lista
+
+        val soma = produtosGlobal.sumOf { it.valor *it.quantidade } //método novo sugerido IDE
+        val f = NumberFormat.getCurrencyInstance(Locale("pt","br"))
+        txt_total.text="Total: ${f.format(soma)}"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Implementação	do	adaptador
-        val produtosAdapter = ArrayAdapter<String>(
-            this, android.R.layout.simple_list_item_1
-        )
+        val produtosAdapter = ProdutoAdapter(this)
+
 
 
         //definindo	o	adaptador	na	lista
@@ -115,8 +136,21 @@ class MainActivity : AppCompatActivity() {
     */
 
 }
-}
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==COD_IMAGE && resultCode==Activity.RESULT_OK){
+            if(data!=null){
+                //aqui podemos acessar a imagem na variável data
+                val inputStream = contentResolver.openInputStream(data.getData()!!)
+
+                imageBitMap = BitmapFactory.decodeStream(inputStream)
+
+                img_foto_produto.setImageBitmap(imageBitMap)
+            }
+        }
+    }
+}
 /*
 public class MainActivity extends Activity {
  ListView listview; String[] subjects = new String[] { "Android", "PHP", "Blogger", "WordPress", "SEO" };
