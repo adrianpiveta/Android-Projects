@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         val soma = produtosGlobal.sumOf { it.valor *it.quantidade } //método novo sugerido IDE
         val f = NumberFormat.getCurrencyInstance(Locale("pt","br"))
-        txt_total.text="Total: ${f.format(soma)}"
+        //txt_total.text="Total: ${f.format(soma)}"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +49,14 @@ class MainActivity : AppCompatActivity() {
         //definindo	o	adaptador	na	lista
         list_view_produtos.adapter = produtosAdapter
 
+
+        var fatorial = 5
+        var resultado = 1
+        while(fatorial>1){
+            resultado*=fatorial
+            fatorial--
+        }
+        txt_total.text=resultado.toString()
 
 
         list_view_produtos.isClickable = true
