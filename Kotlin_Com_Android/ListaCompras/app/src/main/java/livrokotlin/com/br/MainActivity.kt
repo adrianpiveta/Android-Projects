@@ -1,5 +1,10 @@
 package livrokotlin.com.br
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,19 +13,37 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
+
+    val COD_IMAGE = 404
+    var imageBitMap: Bitmap? = null //nullavel
+
+    override fun onResume() {
+        super.onResume()
+
+        val adapter = list_view_produtos.adapter as ProdutoAdapter // puxa adaptador da lista como ProdutoAdapter
+        adapter.clear()//limpa a lista de produtos existentes
+        adapter.addAll(produtosGlobal)// popula o adapter com a lista
+
+        val soma = produtosGlobal.sumOf { it.valor *it.quantidade } //método novo sugerido IDE
+        val f = NumberFormat.getCurrencyInstance(Locale("pt","br"))
+        txt_total.text="Total: ${f.format(soma)}"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Implementação	do	adaptador
-        val produtosAdapter = ArrayAdapter<String>(
-            this, android.R.layout.simple_list_item_1
-        )
+        val produtosAdapter = ProdutoAdapter(this)
+
 
 
         //definindo	o	adaptador	na	lista
@@ -41,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             //retorno	indicando	que	o	click	foi	realizado	com	suc
             true
         }*/
-
+    /*
         list_view_produtos.onItemLongClickListener{adapterView:	AdapterView<*>,	view:	View,	position:	Int,	id:	Long	->
             //buscando	o	item	clicado
             val	item	=	produtosAdapter.getItem(position)
@@ -50,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             list_view_produtos.adapter=produtosAdapter
             Toast.makeText(this, "deleted", Toast.LENGTH_SHORT).show()
             //retorno	indica
-            true}
+            true} */
 
         /*list_view_produtos.setOnItemClickListener { parent, view, position, id ->
             position
@@ -59,6 +82,12 @@ class MainActivity : AppCompatActivity() {
         }*/
         // Matriz quadrada
         var matriz = ArrayList<List<Int>>()
+
+        btn_adicionar.setOnClickListener {
+            val intent  = Intent(this, CadastroActivity::class.java)
+
+            startActivity(intent)
+        }
 
 
         // matriz quadrada
@@ -74,6 +103,7 @@ class MainActivity : AppCompatActivity() {
         }
         */
 
+        /*
         var i=5
         var j=5
         for (x in 1..i) {
@@ -103,10 +133,23 @@ class MainActivity : AppCompatActivity() {
         }
         return retorno
     }
+    */
+
 }
 
-private fun ListView.onItemLongClickListener(value: (AdapterView<*>, View, Int, Long) -> Boolean) {
-    Toast.makeText( context, "Clicou", Toast.LENGTH_SHORT).show()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==COD_IMAGE && resultCode==Activity.RESULT_OK){
+            if(data!=null){
+                //aqui podemos acessar a imagem na variável data
+                val inputStream = contentResolver.openInputStream(data.getData()!!)
+
+                imageBitMap = BitmapFactory.decodeStream(inputStream)
+
+                img_foto_produto.setImageBitmap(imageBitMap)
+            }
+        }
+    }
 }
 /*
 public class MainActivity extends Activity {

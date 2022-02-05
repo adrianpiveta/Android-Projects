@@ -47,7 +47,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_inserir"
-        android:hint="Inserir" />
+        android:hint="Inserir"
+        android:text="Inserir"
+        android:textColor="@color/white"/>
 
 
 
