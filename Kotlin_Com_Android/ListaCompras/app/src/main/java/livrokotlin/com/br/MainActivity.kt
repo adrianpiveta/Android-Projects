@@ -15,6 +15,10 @@ import android.widget.ListView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.db.RowParser
+import org.jetbrains.anko.db.parseList
+import org.jetbrains.anko.db.rowParser
+import org.jetbrains.anko.db.select
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,17 +33,72 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val adapter = list_view_produtos.adapter as ProdutoAdapter // puxa adaptador da lista como ProdutoAdapter
+        /*
+        val adapter =
+            list_view_produtos.adapter as ProdutoAdapter // puxa adaptador da lista como ProdutoAdapter
         adapter.clear()//limpa a lista de produtos existentes
         adapter.addAll(produtosGlobal)// popula o adapter com a lista
 
-        val soma = produtosGlobal.sumOf { it.valor *it.quantidade } //método novo sugerido IDE
-        val f = NumberFormat.getCurrencyInstance(Locale("pt","br"))
-        //txt_total.text="Total: ${f.format(soma)}"
+
+        database.use {
+            select("produtos").exec {
+                val parser = rowParser {
+                    id: Int
+                    nome, String,
+                    quantidade: Int,
+                    valor: Double,
+                    foto: ByteArray? ->
+                    //colunas do BD
+
+                    // montagem do produto
+                    Produto(id, nome, quantidade, valor, foto?.toBitmap())
+                }
+                var listaProdutos = parseList(parser)
+
+                adapter.clear()
+                adapter.addAll(listaProdutos)
+
+
+
+            val soma = listaProdutos.sumByDouble{
+                it.valor * it.quantidade}
+            val f = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
+            txt_total.text = "Total: ${f.format(soma)}"
+        }
+    }*/
+
+        val adapter =
+            list_view_produtos.adapter as ProdutoAdapter
+        database.use	{
+            select("produtos").exec	{
+                //Criando	o	parser	que	montará	o	objeto	produto
+                val	parser	=	rowParser	{
+                        id:	Int,	nome:	String,
+                        quantidade:	Int,
+                        valor:Double,
+                        foto:ByteArray?	->
+                    //Colunas	do	banco	de	dados
+                    //Montagem	do	objeto	Produto	com	as	colunas	do	banco
+                    Produto(id,	nome,	quantidade,	valor,	foto?.toBitmap()	)
+                }
+                //criando	a	lista	de	produtos	com	dados	do	banco
+                var	listaProdutos	=	parseList(parser)
+                //limpando	os	dados	da	lista	e	carregando	as	novas	informações
+                adapter.clear()
+                adapter.addAll(listaProdutos)
+                //efetuando	a	multiplicação	e	soma	da	quantidade	e	valor
+                val	soma	=	listaProdutos.sumByDouble	{	it.valor	*	it.quantidade	}
+                //formatando	em	formato	moeda
+                val	f	=	NumberFormat.getCurrencyInstance(Locale("pt",	"br"))
+                txt_total.text	=	"TOTAL:	${	f.format(soma)}"
+            }
+        }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) // classe de visualização de conteudo
+
+
 
         //Implementação	do	adaptador
         val produtosAdapter = ProdutoAdapter(this)
@@ -49,14 +108,6 @@ class MainActivity : AppCompatActivity() {
         //definindo	o	adaptador	na	lista
         list_view_produtos.adapter = produtosAdapter
 
-
-        var fatorial = 5
-        var resultado = 1
-        while(fatorial>1){
-            resultado*=fatorial
-            fatorial--
-        }
-        txt_total.text=resultado.toString()
 
 
         list_view_produtos.isClickable = true
