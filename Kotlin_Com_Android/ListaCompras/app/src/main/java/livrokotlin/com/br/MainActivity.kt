@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +14,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_cadastro.*
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.db.RowParser
-import org.jetbrains.anko.db.parseList
-import org.jetbrains.anko.db.rowParser
-import org.jetbrains.anko.db.select
+import org.jetbrains.anko.db.*
+import org.jetbrains.anko.toast
+import java.nio.file.Files.delete
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -69,40 +70,38 @@ class MainActivity : AppCompatActivity() {
 
         val adapter =
             list_view_produtos.adapter as ProdutoAdapter
-        database.use	{
-            select("produtos").exec	{
+        database.use {
+            select("produtos").exec {
                 //Criando	o	parser	que	montará	o	objeto	produto
-                val	parser	=	rowParser	{
-                        id:	Int,	nome:	String,
-                        quantidade:	Int,
-                        valor:Double,
-                        foto:ByteArray?	->
+                val parser = rowParser { id: Int, nome: String,
+                                         quantidade: Int,
+                                         valor: Double,
+                                         foto: ByteArray? ->
                     //Colunas	do	banco	de	dados
                     //Montagem	do	objeto	Produto	com	as	colunas	do	banco
-                    Produto(id,	nome,	quantidade,	valor,	foto?.toBitmap()	)
+                    Produto(id, nome, quantidade, valor, foto?.toBitmap())
                 }
                 //criando	a	lista	de	produtos	com	dados	do	banco
-                var	listaProdutos	=	parseList(parser)
+                var listaProdutos = parseList(parser)
                 //limpando	os	dados	da	lista	e	carregando	as	novas	informações
                 adapter.clear()
                 adapter.addAll(listaProdutos)
                 //efetuando	a	multiplicação	e	soma	da	quantidade	e	valor
-                val	soma	=	listaProdutos.sumByDouble	{	it.valor	*	it.quantidade	}
+                val soma = listaProdutos.sumByDouble { it.valor * it.quantidade }
                 //formatando	em	formato	moeda
-                val	f	=	NumberFormat.getCurrencyInstance(Locale("pt",	"br"))
-                txt_total.text	=	"TOTAL:	${	f.format(soma)}"
+                val f = NumberFormat.getCurrencyInstance(Locale("pt", "br"))
+                txt_total.text = "TOTAL:	${f.format(soma)}"
             }
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // classe de visualização de conteudo
 
 
-
         //Implementação	do	adaptador
         val produtosAdapter = ProdutoAdapter(this)
-
 
 
         //definindo	o	adaptador	na	lista
@@ -111,6 +110,24 @@ class MainActivity : AppCompatActivity() {
 
 
         list_view_produtos.isClickable = true
+
+        list_view_produtos.setOnItemLongClickListener { adapter: AdapterView<*>, view1: View,
+                                                        i: Int, l: Long ->
+
+            val item = produtosAdapter.getItem(i)
+
+            produtosAdapter.remove(item)
+
+            if (item != null) {
+                deletarProduto(item.id)
+            }
+            toast("Produto deletado com sucesso")
+
+            true
+
+        }
+
+
 /*
         list_view_produtos.setOnLongClickListener {
 
@@ -123,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             //retorno	indicando	que	o	click	foi	realizado	com	suc
             true
         }*/
-    /*
+        /*
         list_view_produtos.onItemLongClickListener{adapterView:	AdapterView<*>,	view:	View,	position:	Int,	id:	Long	->
             //buscando	o	item	clicado
             val	item	=	produtosAdapter.getItem(position)
@@ -143,7 +160,7 @@ class MainActivity : AppCompatActivity() {
         var matriz = ArrayList<List<Int>>()
 
         btn_adicionar.setOnClickListener {
-            val intent  = Intent(this, CadastroActivity::class.java)
+            val intent = Intent(this, CadastroActivity::class.java)
 
             startActivity(intent)
         }
@@ -194,12 +211,12 @@ class MainActivity : AppCompatActivity() {
     }
     */
 
-}
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode==COD_IMAGE && resultCode==Activity.RESULT_OK){
-            if(data!=null){
+        if (requestCode == COD_IMAGE && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
                 //aqui podemos acessar a imagem na variável data
                 val inputStream = contentResolver.openInputStream(data.getData()!!)
 
@@ -209,7 +226,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    fun deletarProduto(idProduto: Int) {
+        database.use {
+            delete("produto", "id = {id}", "id" to idProduto)
+        }
+    }
+
 }
+
+
 /*
 public class MainActivity extends Activity {
  ListView listview; String[] subjects = new String[] { "Android", "PHP", "Blogger", "WordPress", "SEO" };
