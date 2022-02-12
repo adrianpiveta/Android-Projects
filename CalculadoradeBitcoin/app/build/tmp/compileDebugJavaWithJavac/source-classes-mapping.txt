@@ -1,2 +1,12 @@
+livrokotlin/com/calculadoradebitcoin/databinding/BlocoCotacaoBinding.java
+ livrokotlin.com.calculadoradebitcoin.databinding.BlocoCotacaoBinding
+livrokotlin/com/calculadoradebitcoin/databinding/ActivityMainBinding.java
+ livrokotlin.com.calculadoradebitcoin.databinding.ActivityMainBinding
+livrokotlin/com/calculadoradebitcoin/databinding/BlocoSaidaBinding.java
+ livrokotlin.com.calculadoradebitcoin.databinding.BlocoSaidaBinding
 livrokotlin/com/calculadoradebitcoin/BuildConfig.java
  livrokotlin.com.calculadoradebitcoin.BuildConfig
+livrokotlin/com/calculadoradebitcoin/databinding/BlocoEntradaBinding.java
+ livrokotlin.com.calculadoradebitcoin.databinding.BlocoEntradaBinding
+livrokotlin/com/calculadoradebitcoin/databinding/BlocoTituloBinding.java
+ livrokotlin.com.calculadoradebitcoin.databinding.BlocoTituloBinding
