@@ -8,6 +8,12 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Testa permissão"
+        android:id="@+id/btn_permissao"/>
+
     <include layout="@layout/bloco_titulo"/>
 
     <include layout="@layout/bloco_cotacao"/>
