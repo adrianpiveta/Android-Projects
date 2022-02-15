@@ -163,9 +163,9 @@ class MainActivity : AppCompatActivity() {
         // mesmo sendo uma unica permissão, precisa ir dentro do array
         if (ContextCompat.checkSelfPermission(this,
              permissao)==
-              PackageManager.PERMISSION_GRANTED){
-        //permissão OK
-        //} else{
+              PackageManager.PERMISSION_GRANTED) {
+            //permissão OK
+        } else{
         //sem permissão
         ActivityCompat.requestPermissions(
             this,

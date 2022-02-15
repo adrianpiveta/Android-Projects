@@ -3,6 +3,7 @@
     package="livrokotlin.com.calculadoradebitcoin">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="Manifest.permission.CAMERA"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
