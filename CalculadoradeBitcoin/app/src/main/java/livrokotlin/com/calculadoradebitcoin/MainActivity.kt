@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             uiThread {
                 txt_cotacao.setText("$cotacaoFormatada")
                 criaNotificacao(
-                    "foram aualizados os" +
+                    "foram atualizados os" +
                             " valores", "Valores novos"
                 )
             }
