@@ -1,0 +1,2 @@
+livrokotlin/com/teste/BuildConfig.java
+ livrokotlin.com.teste.BuildConfig
